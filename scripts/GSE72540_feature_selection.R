@@ -305,11 +305,11 @@ w_vs_nl_modelfit$bestTune #mtry #1   37
 png(file=paste("../images/ml_images/w_vs_nl_boruta_varImportance.png"))
 plot(varImp(w_vs_nl_modelfit,scale=F,type=2
             
-),main="Wheal vs Healthy Variable Importance: RF 5 fold CV",top=20)
+),main="Wheal vs non-lesional Variable Importance: RF 5 fold CV",top=20)
 dev.off()
 plot(varImp(w_vs_nl_modelfit,scale=F,type=2,
             
-),main="Wheal vs Healthy Variable Importance: RF 5 fold CV",top=20) # Mean Decrease Gini importance
+),main="Wheal vs non-lesional Variable Importance: RF 5 fold CV",top=20) # Mean Decrease Gini importance
 
 ##r<-varImp(w_vs_nl_modelfit,scale=F,type=2,useModel = FALSE)
 w_vs_nl_sub<-subset(w_vs_nl_modelfit$pred,w_vs_nl_modelfit$pred$mtry==w_vs_nl_modelfit$bestTune$mtry)
@@ -449,4 +449,4 @@ Nonlesional_vs_Healthy<-borutaVars_nl_vs_h
 #METHOD 1
 Imp_genes$Wheal_vs_Healthy <- c(Wheal_vs_Healthy, rep(NA, nrow(Imp_genes)-length(Wheal_vs_Healthy)))  #keep as integer
 Imp_genes$Nonlesional_vs_Healthy <- c(Nonlesional_vs_Healthy, rep(NA, nrow(Imp_genes)-length(Nonlesional_vs_Healthy))) 
-write.csv(Imp_genes,file="../data/significant_genes.rds",row.names = FALSE)
+write.csv(Imp_genes,file="../data/significant_genes.csv",row.names = FALSE)
